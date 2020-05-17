@@ -1,3 +1,5 @@
 node_modules/
 av.bat
 manage.py
+__pycache__
+.vscode
