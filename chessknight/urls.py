@@ -20,4 +20,6 @@ from .views import ChessknightView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ChessknightView.as_view()),
+    path('<str:start>', ChessknightView.as_view()),
+    path('<str:start>/<int:variant>', ChessknightView.as_view()),
 ]
