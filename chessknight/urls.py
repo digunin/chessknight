@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import re_path
 from .views import ChessknightView
 from graphene_django.views import GraphQLView
 from django.conf import settings
@@ -23,6 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('graphql/', GraphQLView.as_view(graphiql=settings.DEBUG)),
     path('', ChessknightView.as_view()),
-    path('<str:start>', ChessknightView.as_view()),
-    path('<str:start>/<int:variant>', ChessknightView.as_view()),
+    re_path(r'^(?P<start>[a-h][1-8])$', ChessknightView.as_view()),
+    re_path(r'^(?P<start>[a-h][1-8])/(?P<variant>\d+)$', ChessknightView.as_view()),
 ]
