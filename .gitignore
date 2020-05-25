@@ -1,4 +1,5 @@
 node_modules/
+static/
 av.bat
 manage.py
 __pycache__
