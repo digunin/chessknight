@@ -1,13 +1,18 @@
 import graphene
-import json
 from .utils import test
 
 class Query(graphene.ObjectType):
-    board = graphene.JSONString(start = graphene.Int(default_value=1))
+    variant = graphene.List(graphene.Int, start = graphene.Int(default_value=1), position = graphene.Int(default_value = 1))
+    board = graphene.List(variant, start = graphene.Int(default_value=1))
 
     def resolve_board(self, info, **kwargs):
         start = kwargs.get('start')
         start-=1
-        if(start < 0): start = 0
-        if(start > 3): start = 3
-        return json.dumps(test[start])
+        return test[start]
+        
+    def resolve_variant(self, info, **kwargs):
+        start = kwargs.get('start')
+        pos = kwargs.get('position')
+        start-=1
+        pos-=1
+        return test[start][pos]
