@@ -1,15 +1,26 @@
 import React from "react";
 import {A} from 'hookrouter'
+import {gql} from 'apollo-boost'
+import {useQuery} from '@apollo/react-hooks'
 
 export default ({start = 'a8', variant = '1'}) => {
+    let s = start == 'a8' ? 1 : 2;
+
+    const { loading, error, data } = useQuery(gql`
+    {
+      variant(start: ${s}, position: ${variant})
+    }
+  `)
     return(
         <div>
             <h1>Привет, реакт!</h1>
-            <A href="/e4/"> e4 </A>
-            <A href="/h5/6/"> h5 </A>
-            <A href="/tgh/45/64/"> tgh </A>
-            <div>start = {start}</div>
-            <div>variant = {variant}</div>
+            <A href="/a8/1/"> a8 - 1 </A><br/>
+            <A href="/a8/2/"> a8 - 2 </A><br/>
+            <A href="/b8/1/"> b8 - 1 </A><br/>
+            <A href="/b8/2/"> b8 - 2 </A><br/>
+            {loading&&<div>...Загрузка</div>}
+            {error&&<div>Ошибка</div>}
+            {!loading&&data&&<div>{data.variant}</div>}
         </div>
     )
 }
