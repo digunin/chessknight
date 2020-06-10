@@ -7,7 +7,7 @@ import {useQuery} from '@apollo/react-hooks'
 export default ({start = '0', variant = '0'}) => {
     let s = start == 'a8' ? 1 : 2;
     if(start != '0' && variant == '0'){
-      navigate('/' + start + '/' + '1' + '/')
+      navigate('/' + start + '/' + '1' + '/', true)
     }
 
     const { loading, error, data } = useQuery(GetVariants, {variables:{start: s}})
