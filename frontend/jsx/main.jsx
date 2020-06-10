@@ -1,10 +1,13 @@
 import React from "react";
-import {A} from 'hookrouter'
+import {A, navigate} from 'hookrouter'
 import {gql} from 'apollo-boost'
 import {useQuery} from '@apollo/react-hooks'
 
-export default ({start = 'a8', variant = '1'}) => {
+export default ({start = '0', variant = '0'}) => {
     let s = start == 'a8' ? 1 : 2;
+    if(start != '0' && variant == '0'){
+      navigate('/' + start + '/' + '1' + '/')
+    }
 
     const { loading, error, data } = useQuery(gql`
     {
