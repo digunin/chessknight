@@ -9,6 +9,17 @@ export const convertCoordToNumber = (coord) => {
     let y = 8 - (+coord[1])
     let x = xCoords.indexOf(coord[0])
     let numb = y*8+x+1
-    console.log(numb)
     return numb
+}
+
+export const convertNumberToCoord = (number)=>{
+
+    // переводит порядковый номер в координаты вида "e2"
+
+    let result = ""
+    let x = number%8
+    x = x == 0 ? 8 : x
+    result += xCoords[x - 1]
+    result += (8 - Math.trunc((number-1)/8))
+    return result
 }
