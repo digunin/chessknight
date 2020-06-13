@@ -5,10 +5,7 @@ import {useQuery} from '@apollo/react-hooks'
 import {convertCoordToNumber as convert} from './utils'
 
 export default ({start = '0', variant = '0'}) => {
-    if(start != '0' && variant == '0'){
-      navigate('/' + start + '/' + '1' + '/', true)
-    }
-
+    
     let s = convert(start)
 
     const { loading, error, data } = useQuery(GetVariants, {variables:{start: s}})
