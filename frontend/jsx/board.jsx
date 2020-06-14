@@ -11,7 +11,9 @@ export default ({variant})=>{
             <div className = "squares">
             {
                 variant.map((numb, i)=>{
-                    return <Square key={i} number = {i+1} value = {numb} />
+                    let tmp = (i%2 + Math.trunc(i/8))%2
+                    let subclass = tmp == 0 ? "lightsquare" : "darksquare"
+                    return <Square subclass={subclass} key={i} number = {i+1} value = {numb} />
                 })
             }
             </div>
