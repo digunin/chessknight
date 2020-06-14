@@ -7,8 +7,8 @@ class Query(graphene.ObjectType):
 
     def resolve_board(self, info, **kwargs):
         start = kwargs.get('start')
-        if(start == 0):
-            return []
+        if(start < 1 or start > 4):
+            return test[4]
         start-=1
         return test[start]
         
