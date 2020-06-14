@@ -1,18 +1,71 @@
 *
     box-sizing: border-box
+    margin: 0
+    padding: 0
 
 html
     font: 10px sans-serif
 
 body
     font-size: 1.6rem    
+
+#root
+    display: flex
+    justify-content: center
+    align-items: center
+    min-height: 100vh
     
 .board
     width: 400px
     height: 400px
     border: 1px solid black
+    padding: 1.5em
+    position: relative
+    .squares
+        // width: calc(100% - 2em)
+        width: 100%
+        // height: calc(100% - 2em)
+        height: 100%
+        display: flex
+        flex-wrap: wrap
+
+.boardlabel
+    position: absolute
     display: flex
-    flex-wrap: wrap
+    justify-content: center
+    align-items: center
+
+.toplabel, .bottomlabel
+    flex-direction: row
+    left: 1.5em
+    right: 1.5em
+    p
+        text-align: center
+        width: 12.5%
+
+.leftlabel, .rightlabel
+    flex-direction: column
+    top: 1.5em
+    bottom: 1.5em
+    p
+        line-height: 2.6em
+        height: 12.5%
+
+.leftlabel
+    left: 0
+    width: 1.5em
+
+.rightlabel
+    right: 0
+    width: 1.5em
+
+.toplabel
+    top: 0px
+    height: 1.5em
+
+.bottomlabel
+    bottom: 0px
+    height: 1.5em
 
 .square
     width: 12.5%
