@@ -23,14 +23,15 @@ a
 
 .main
     display: flex
-    .navbar
-        margin-right: 1em
+    .navbar, .controlpanel
         display: flex
         flex-direction: column
         width: 3em
         min-height: 100%
-        border: 3px solid $darksquare-color
         box-shadow: 5px 5px 10px $darksquare-color
+    .navbar
+        margin-right: 1em
+        border: 3px solid $darksquare-color
         .navbutton
             display: flex
             justify-content: center
@@ -55,6 +56,24 @@ a
             display: flex
             flex-wrap: wrap
             border: 1px solid $darksquare-color
+    .controlpanel
+        margin-left: 1em
+        .controlbutton, .interval
+            border: 3px solid $darksquare-color
+            border-top-width: 1.5px
+            border-bottom-width: 1.5px
+            background-color: $lightsquare-color
+            height: 16%
+            &:first-child
+                border-top-width: 3px
+            &:last-child
+                border-bottom-width: 3px
+        .interval
+            height: 20%
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
 
 .boardlabel
     position: absolute

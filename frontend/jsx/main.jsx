@@ -4,6 +4,7 @@ import {useQuery} from '@apollo/react-hooks'
 import {convertCoordToNumber as convert, errorVariant, loadingVariant} from './utils'
 import Board from './board.jsx'
 import Navbar from './navbar.jsx'
+import ControlPanel from './controlpanel.jsx'
 
 export default ({start = '0', variant = '1'}) => {
 
@@ -27,6 +28,7 @@ export default ({start = '0', variant = '1'}) => {
         <div className = "main">
             <Navbar start={start} count={count} current={+variant}/>
             <Board variant={variantData}/>
+            <ControlPanel onStart={()=>alert("Старт")} onStop={()=>alert("Стоп")} onPause={()=>alert("Пауза")} onPlus={()=>alert("Быстрее")} onMinus={()=>alert("Медленнее")}/>
         </div>
     )
 }
