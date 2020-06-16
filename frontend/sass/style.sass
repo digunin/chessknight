@@ -23,8 +23,6 @@ a
 
 .main
     display: flex
-    // .navbar, .controlpanel, .board
-        // box-shadow: 5px 5px 10px $darksquare-color
     .navbar, .controlpanel
         display: flex
         flex-direction: column
@@ -50,8 +48,10 @@ a
                 background-color: $darksquare-color
                 color: $lightsquare-color
     .board
-        width: 400px
-        height: 400px
+        min-width: 400px
+        min-height: 400px
+        width: 75vmin
+        height: 75vmin
         border: 3px solid $darksquare-color
         padding: 1.5em
         position: relative
@@ -147,6 +147,37 @@ a
         color: $darksquare-color
 
 @media (orientation: portrait)
-    body
-        background-color: red
-    
+    .main
+        flex-direction: column
+        .navbar, .controlpanel
+            flex-direction: row
+            width: 100%
+            height: 3em
+        .board
+            box-shadow: 0px 0px 15px $darksquare-color
+        .navbar
+            margin: 0 0 1em 0
+            box-shadow: 0px -5px 10px $darksquare-color
+            .navbutton
+                width: 10%
+                height: 100%
+                border: none
+                border-right: 1px solid $darksquare-color
+                &:last-child
+                    border: none
+                    border-right: none
+        .controlpanel
+            margin: 1em 0 0 0
+            box-shadow: 0px 5px 10px $darksquare-color
+            .controlbutton, .interval
+                border: 3px solid $darksquare-color
+                border-left-width: 1.5px
+                border-right-width: 1.5px
+                width: 16%
+                height: 100%
+                &:first-child
+                    border-left-width: 3px
+                &:last-child
+                    border-right-width: 3px
+            .interval
+                width: 20%
