@@ -7,30 +7,36 @@ import Navbar from './navbar.jsx'
 import ControlPanel from './controlpanel.jsx'
 
 export default ({start = '0', variant = '1'}) => {
+    const [path, setPath] = useState("_"+start+variant)
     const [currentSquare, setCurrentSquare] = useState(64)
     const [paused, setPaused] = useState(false)
-    const { loading, error, data } = useQuery(GetVariants, {variables:{start: s}})
-    
+    const { loading, error, data } = useQuery(GetVariants, {variables:{start: convert(start)}})
+        
+    const getPath = ()=>("_" + start + variant)
+    const pathChanged = ()=>("_"+start+variant !== path)
+
     useEffect(()=>{
+        if(pathChanged()){
+            setCurrentSquare(64)
+            setPaused(false)
+            setPath(getPath())
+            return
+        }
         let id=null
         if(currentSquare < 64){
             if(paused)return
             id = setTimeout(()=>setCurrentSquare(currentSquare+1), 200)
-            console.log("start timeout");
-            
         }
         return(()=>{
             if(id!=null){
                 clearTimeout(id)
-                console.log("clear ------------ timeout")
             }
         })
     })
 
-    let s = convert(start)
     let variantData = []
     let count = 0
-
+    
     if(loading){
         variantData = loadingVariant
     }
@@ -47,7 +53,7 @@ export default ({start = '0', variant = '1'}) => {
             <Navbar start={start} count={count} current={+variant}/>
             <Board currentSquare={currentSquare} variant={variantData}/>
             <ControlPanel 
-                onStart={()=>{setCurrentSquare(0)}} 
+                onStart={()=>{if(start !== "0")setCurrentSquare(0)}} 
                 onStop={()=>setCurrentSquare(64)} 
                 onPause={()=>setPaused(!paused)} 
                 onPlus={()=>alert("Быстрее")} 
