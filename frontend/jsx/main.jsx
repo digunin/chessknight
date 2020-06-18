@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import GetVariants from '../gql/board.graphql'
 import {useQuery} from '@apollo/react-hooks'
-import {convertCoordToNumber as convert, errorVariant, loadingVariant} from './utils'
+import {convertCoordToNumber as convert, errorVariant, loadingVariant, periods} from './utils'
 import Board from './board.jsx'
 import Navbar from './navbar.jsx'
 import ControlPanel from './controlpanel.jsx'
@@ -10,6 +10,7 @@ export default ({start = '0', variant = '1'}) => {
     const [path, setPath] = useState("_"+start+variant)
     const [currentSquare, setCurrentSquare] = useState(64)
     const [paused, setPaused] = useState(false)
+    const [period, setPeriod] = useState(2)
     const { loading, error, data } = useQuery(GetVariants, {variables:{start: convert(start)}})
         
     const getPath = ()=>("_" + start + variant)
@@ -25,7 +26,7 @@ export default ({start = '0', variant = '1'}) => {
         let id=null
         if(currentSquare < 64){
             if(paused)return
-            id = setTimeout(()=>setCurrentSquare(currentSquare+1), 200)
+            id = setTimeout(()=>setCurrentSquare(currentSquare+1), periods[period])
         }
         return(()=>{
             if(id!=null){
@@ -53,11 +54,12 @@ export default ({start = '0', variant = '1'}) => {
             <Navbar start={start} count={count} current={+variant}/>
             <Board currentSquare={currentSquare} variant={variantData}/>
             <ControlPanel 
+                period = {periods[period]}
                 onStart={()=>{if(start !== "0")setCurrentSquare(0)}} 
                 onStop={()=>setCurrentSquare(64)} 
                 onPause={()=>setPaused(!paused)} 
-                onPlus={()=>alert("Быстрее")} 
-                onMinus={()=>alert("Медленнее")}/>
+                onPlus={()=>{if(period<4)setPeriod(period+1)}} 
+                onMinus={()=>{if(period>0)setPeriod(period-1)}}/>
         </div>
     )
 }
