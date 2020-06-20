@@ -10,7 +10,7 @@ export default ({start = '0', variant = '1'}) => {
     const [path, setPath] = useState("_"+start+variant)
     const [currentSquare, setCurrentSquare] = useState(64)
     const [paused, setPaused] = useState(false)
-    const [period, setPeriod] = useState(2)
+    const [speed, setSpeed] = useState(2)
     const { loading, error, data } = useQuery(GetVariants, {variables:{start: convert(start)}})
         
     const getPath = ()=>("_" + start + variant)
@@ -26,7 +26,7 @@ export default ({start = '0', variant = '1'}) => {
         let id=null
         if(currentSquare < 64){
             if(paused)return
-            id = setTimeout(()=>setCurrentSquare(currentSquare+1), periods[period])
+            id = setTimeout(()=>setCurrentSquare(currentSquare+1), periods[speed])
         }
         return(()=>{
             if(id!=null){
@@ -54,12 +54,12 @@ export default ({start = '0', variant = '1'}) => {
             <Navbar start={start} count={count} current={+variant}/>
             <Board currentSquare={currentSquare} variant={variantData}/>
             <ControlPanel 
-                period = {periods[period]}
+                speed = {speed}
                 onStart={()=>{if(start !== "0")setCurrentSquare(0)}} 
                 onStop={()=>setCurrentSquare(64)} 
                 onPause={()=>setPaused(!paused)} 
-                onPlus={()=>{if(period<4)setPeriod(period+1)}} 
-                onMinus={()=>{if(period>0)setPeriod(period-1)}}/>
+                onPlus={()=>{if(speed<4)setSpeed(speed+1)}} 
+                onMinus={()=>{if(speed>0)setSpeed(speed-1)}}/>
         </div>
     )
 }

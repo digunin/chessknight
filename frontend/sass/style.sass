@@ -66,7 +66,7 @@ a
         margin: 0 0 0 1em
         box-shadow: 5px 5px 10px $darksquare-color
         border: 3px solid $darksquare-color
-        .controlbutton, .interval
+        .controlbutton, .indicator
             border-bottom: 3px solid $darksquare-color
             background-color: $lightsquare-color
             height: 16%
@@ -75,13 +75,32 @@ a
             align-items: center
             &:last-child
                 border-bottom: none
-        .interval
+        .controlbutton
+            &:active
+                box-shadow: inset 1px 1px 5px $darksquare-color
+                background-color: darken($lightsquare-color, 2%)
+        .indicator
             height: 20%
             display: flex
-            flex-direction: column
-            justify-content: center
-            align-items: center
-
+            align-items: flex-end
+            .unit
+                border-radius: 100% 0 0 0/30% 0 0 0
+                width: 20%
+                background-color: $lightsquare-color
+                &.active
+                    background-color: green
+            .unit1
+                height: 20%
+            .unit2
+                height: 40%
+            .unit3
+                height: 60%
+            .unit4
+                height: 80%
+            .unit5
+                height: 100%
+                &.active
+                    background-color: red
 .boardlabel
     position: absolute
     display: flex
@@ -169,12 +188,12 @@ a
         .controlpanel
             margin: 1em 0 0 0
             box-shadow: 0px 5px 10px $darksquare-color
-            .controlbutton, .interval
+            .controlbutton, .indicator
                 border-bottom: none
                 border-right: 3px solid $darksquare-color
                 width: 16%
                 height: 100%
                 &:last-child
                     border-right: none
-            .interval
+            .indicator
                 width: 20%
