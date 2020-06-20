@@ -10,7 +10,6 @@ export default ({speed=2})=>{
                     if(i<=speed){
                         name+=" active"
                     }
-                    console.log("speed = "+speed+", i = "+i)
                     return <div key={i} className={name}></div>
                 })
             }
