@@ -11,6 +11,10 @@ html
 
 body
     font-size: 1.6rem    
+    background-position: center
+    background-size: cover
+    background-image:  linear-gradient(90deg, transparent 10%, white, transparent 90%), url("/static/images/bg.jpg")
+    background-repeat: no-repeat
 
 #root
     display: flex
@@ -170,6 +174,8 @@ a
         color: $darksquare-color
 
 @media (orientation: portrait)
+    body
+        background-image:  linear-gradient(transparent 10%, white, transparent 90%), url("/static/images/bg.jpg")
     .main
         flex-direction: column
         .navbar, .controlpanel
