@@ -48,8 +48,8 @@ a
                 background-color: $darksquare-color
                 color: $lightsquare-color
     .board
-        min-width: 400px
-        min-height: 400px
+        min-width: 320px
+        min-height: 320px
         width: 75vmin
         height: 75vmin
         border: 3px solid $darksquare-color
@@ -65,16 +65,16 @@ a
     .controlpanel
         margin: 0 0 0 1em
         box-shadow: 5px 5px 10px $darksquare-color
+        border: 3px solid $darksquare-color
         .controlbutton, .interval
-            border: 3px solid $darksquare-color
-            border-top-width: 1.5px
-            border-bottom-width: 1.5px
+            border-bottom: 3px solid $darksquare-color
             background-color: $lightsquare-color
             height: 16%
-            &:first-child
-                border-top-width: 3px
+            display: flex
+            justify-content: center
+            align-items: center
             &:last-child
-                border-bottom-width: 3px
+                border-bottom: none
         .interval
             height: 20%
             display: flex
@@ -170,14 +170,11 @@ a
             margin: 1em 0 0 0
             box-shadow: 0px 5px 10px $darksquare-color
             .controlbutton, .interval
-                border: 3px solid $darksquare-color
-                border-left-width: 1.5px
-                border-right-width: 1.5px
+                border-bottom: none
+                border-right: 3px solid $darksquare-color
                 width: 16%
                 height: 100%
-                &:first-child
-                    border-left-width: 3px
                 &:last-child
-                    border-right-width: 3px
+                    border-right: none
             .interval
                 width: 20%
