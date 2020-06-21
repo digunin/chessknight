@@ -59,6 +59,7 @@ export default ({start = '0', variant = '1'}) => {
             <Board currentSquare={currentSquare} variant={variantData}/>
             <ControlPanel 
                 speed = {speed}
+                isPaused = {paused}
                 onStart={()=>{if(start !== "0")setCurrentSquare(0)}} 
                 onStop={()=>setCurrentSquare(64)} 
                 onPause={()=>setPaused(!paused)} 

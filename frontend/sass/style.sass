@@ -107,12 +107,21 @@ a
                 border-bottom: none
         .controlbutton
             &:active
-                box-shadow: inset 1px 1px 5px $darksquare-color
+                box-shadow: inset 2px 2px 7px $darksquare-color
                 background-color: darken($lightsquare-color, 2%)
                 img
                     width: 1.4em
             img
                 width: 1.5em
+            &.pauseactive
+                box-shadow: inset 1px 1px 6px $darksquare-color
+                background-color: darken($lightsquare-color, 2%)
+                img
+                    width: 1.45em
+                &:active
+                    box-shadow: inset 2px 2px 7px $darksquare-color
+                    img
+                        width: 1.4em
         .indicator
             height: 20%
             display: flex
