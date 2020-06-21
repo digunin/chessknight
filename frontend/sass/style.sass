@@ -91,24 +91,24 @@ a
             height: 20%
             display: flex
             align-items: flex-end
+            position: relative
+            .overlay
+                top: 0
+                left: 0
+                bottom: 0
+                right: 0
+                position: absolute
+                background-image: linear-gradient(120deg, $lightsquare-color 0%, $lightsquare-color 50%, transparent 50%, transparent 100%)
             .unit
-                border-radius: 100% 0 0 0/30% 0 0 0
                 width: 20%
+                height: 100%
                 background-color: $lightsquare-color
                 &.active
                     background-color: green
-            .unit1
-                height: 20%
-            .unit2
-                height: 40%
-            .unit3
-                height: 60%
-            .unit4
-                height: 80%
-            .unit5
-                height: 100%
-                &.active
-                    background-color: red
+                &:last-child
+                    &.active
+                        background-color: red
+            
 .boardlabel
     position: absolute
     display: flex
@@ -207,3 +207,6 @@ a
                     border-right: none
             .indicator
                 width: 20%
+                height: 100%
+                .overlay
+                    background-image: linear-gradient(150deg, $lightsquare-color 0%, $lightsquare-color 50%, transparent 50%, transparent 100%)

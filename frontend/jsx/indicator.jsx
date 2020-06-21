@@ -1,18 +1,14 @@
 import React from 'react'
 
 export default ({speed=2})=>{
-    const class_names = ["unit1", "unit2", "unit3", "unit4", "unit5"]
+    let list =[]
+    for(let i=0;i<=4;i++){
+        list.push(<div key={i} className={i<=speed?"unit active":"unit"}></div>)
+    }
     return(
         <div className="indicator">
-            {
-                class_names.map((value, i)=>{
-                    let name = "unit "+value
-                    if(i<=speed){
-                        name+=" active"
-                    }
-                    return <div key={i} className={name}></div>
-                })
-            }
+            <div className="overlay"></div>
+            {list}
         </div>
     )
 }
