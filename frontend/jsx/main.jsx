@@ -5,6 +5,7 @@ import {convertCoordToNumber as convert, errorVariant, loadingVariant, periods} 
 import Board from './board.jsx'
 import Navbar from './navbar.jsx'
 import ControlPanel from './controlpanel.jsx'
+import Spiner from './spiner.jsx'
 
 export default ({start = '0', variant = '1'}) => {
     const [path, setPath] = useState("_"+start+variant)
@@ -51,6 +52,7 @@ export default ({start = '0', variant = '1'}) => {
     
     return(
         <div className = "main">
+            {loading&&<Spiner />}
             <Navbar start={start} count={10} current={+variant}/>
             <Board currentSquare={currentSquare} variant={variantData}/>
             <ControlPanel 
