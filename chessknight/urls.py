@@ -26,5 +26,5 @@ urlpatterns = [
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=settings.DEBUG))),
     path('', ChessknightView.as_view()),
     re_path(r'^(?P<start>[a-h][1-8])/$', ChessknightView.as_view()),
-    re_path(r'^(?P<start>[a-h][1-8])/(?P<variant>\d+)/$', ChessknightView.as_view()),
+    re_path(r'^(?P<start>[a-h][1-8])/(?P<variant>\d\d?)/$', ChessknightView.as_view()),
 ]

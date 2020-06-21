@@ -51,7 +51,7 @@ export default ({start = '0', variant = '1'}) => {
     
     return(
         <div className = "main">
-            <Navbar start={start} count={count} current={+variant}/>
+            <Navbar start={start} count={10} current={+variant}/>
             <Board currentSquare={currentSquare} variant={variantData}/>
             <ControlPanel 
                 speed = {speed}
