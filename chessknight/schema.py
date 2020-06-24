@@ -7,9 +7,8 @@ class Query(graphene.ObjectType):
 
     def resolve_board(self, info, **kwargs):
         start = kwargs.get('start')
-        if(start < 1 or start > 4):
-            return test[4]
-        start-=1
+        if(start < 0 or start > 4):
+            return test[0]
         return test[start]
         
     def resolve_variant(self, info, **kwargs):
@@ -18,3 +17,4 @@ class Query(graphene.ObjectType):
         start-=1
         pos-=1
         return test[start][pos]
+        
