@@ -1,3 +1,0 @@
-query GetVariants($start: Int) {
-    board(start: $start)
-}
