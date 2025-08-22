@@ -1,2 +1,2 @@
 # chessknight
-Демо/Demo: http://chessknight.pythonanywhere.com/
+Демо/Demo: https://chessknight.pythonanywhere.com/
